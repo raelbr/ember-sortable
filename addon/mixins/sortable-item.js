@@ -291,7 +291,7 @@ export default Mixin.create({
     }
 
     $(window).one('mousemove touchmove', startDragListener);
-    $(window).one('mouseup touchend', cancelStartDragListener);
+    $(window).one('click mouseup touchend', cancelStartDragListener);
   },
 
   /**
@@ -306,14 +306,14 @@ export default Mixin.create({
     let drop = () => {
       $(window)
         .off('mousemove touchmove', drag)
-        .off('mouseup touchend', drop);
+        .off('click mouseup touchend', drop);
 
       this._drop();
     };
 
     $(window)
       .on('mousemove touchmove', drag)
-      .on('mouseup touchend', drop);
+      .on('click mouseup touchend', drop);
 
     this._tellGroup('prepare');
     this.set('isDragging', true);
